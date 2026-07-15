@@ -1391,7 +1391,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="callback" data-reveal="right">
         <h3>Request a call back</h3>
-        <form id="callbackForm" novalidate>
+        <form id="callbackForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="4ea9639f-af34-469a-90fd-616cbb136368">
+          <input type="hidden" name="subject" value="New website enquiry - The House of Scale">
+          <input type="hidden" name="from_name" value="The House of Scale Website">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="field"><label for="cb-name">Name *</label><input id="cb-name" name="name" type="text" placeholder="Your full name" required></div>
           <div class="field"><label for="cb-company">Company Name *</label><input id="cb-company" name="company" type="text" placeholder="The brand we will be scaling" required></div>
           <div class="field"><label for="cb-email">Email Address *</label><input id="cb-email" name="email" type="email" placeholder="you@company.com" required></div>
@@ -1503,7 +1507,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 <script>
-(function(){var f=document.getElementById('callbackForm');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();f.reset();window.location.href='/thank-you';});})();
+(function(){var f=document.getElementById('callbackForm');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var btn=f.querySelector('button[type=submit]');if(btn){btn.disabled=true;}fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){window.location.href='/thank-you';}).catch(function(){window.location.href='/thank-you';});});})();
 </script>
 <script>
 (function(){
